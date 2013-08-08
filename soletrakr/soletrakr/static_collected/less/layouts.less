@@ -1,0 +1,36 @@
+//
+// Layouts
+// --------------------------------------------------
+
+body {
+	padding-top: 30px;
+	background-image: url('../img/grey_wash_wall.png');
+	background-repeat:repeat;
+}
+
+// Container (centered, fixed-width layouts)
+.container {
+  .container-fixed();
+}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+.container-fluid {
+  padding-right: @gridGutterWidth;
+  padding-left: @gridGutterWidth;
+  .clearfix();
+}
+
+.toolbox-list {
+	padding-left: 10px;
+	line-height: 10px;
+}
+
+.shadow {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+.green {
+	color: green;
+}

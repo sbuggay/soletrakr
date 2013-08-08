@@ -1,0 +1,67 @@
+{% load dajaxice_templatetags %}
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<!-- internal stylesheets -->
+	<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/bootstrap.less" />
+	<link rel="stylesheet" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css">
+	<!-- interal scripts -->
+	<script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/gmaps.js"></script>
+
+	{% dajaxice_js_import %}
+
+
+	<style type="text/css">
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="email"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+    </style>
+</head>
+<body>
+	
+
+	<!-- container -->
+	<div class="container">
+		<br>
+		<form class="form-signin" action="{% url "login" %}" method="POST">
+        <h2 class="form-signin-heading">Sole<span class="green">Trakr</span></h2>
+        <fieldset>
+          {% csrf_token %}
+          {{ login_form.as_p }}
+        </fieldset>
+        <button class="btn btn-warning" href="#">Forgot Password</button>
+        <button class="btn btn-primary" type="submit" ;="">Sign in</button>
+     	</form>
+	</div>
+
+	<!-- internal scripts -->
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/soletrackr.js"></script>
+</body>
+</html>

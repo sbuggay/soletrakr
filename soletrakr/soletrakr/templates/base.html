@@ -1,0 +1,55 @@
+{% load dajaxice_templatetags %}
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<!-- internal stylesheets -->
+	<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/bootstrap.less" />
+	<link rel="stylesheet" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css">
+	<!-- interal scripts -->
+	<script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/gmaps.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}dajax/jquery.dajax.core.js"></script>
+	
+	<title>soletrakr</title>
+
+	{% dajaxice_js_import %}
+</head>
+<body>
+	
+	<!-- container -->
+	<div class="container">
+		
+		{% include "nav.html" %}
+		<!-- content -->
+			<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> This website is under <strong>HEAVY</strong> construction...
+  
+</div>
+<div class="progress">
+  <div class="bar" style="width: 60%;"></div>
+</div>
+			<h1> Welcome <small>to SoleTrakr!</small></h1>
+			<hr>
+			<p>SoleTrakr is a ...</p>
+			<h2> This is the SoleTrakr landing page</h2>
+			<ul>
+				<li>Explanation</li>
+				<li>Where to buy</li>
+				<li>Etc..</li>
+			</ul>
+
+	</div>
+
+	{% include "footer.html" %}
+
+	
+
+	<!-- internal scripts -->
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/soletrackr.js"></script>
+</body>
+</html>

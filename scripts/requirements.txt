@@ -1,0 +1,14 @@
+requests
+psycopg2
+Django==1.5
+https://github.com/django/django-localflavor/zipball/master
+django-tastypie
+django-userprofiles
+django-dajaxice
+django-dajax
+django_extensions
+django_localflavor_us
+gunicorn
+south
+werkzeug
+

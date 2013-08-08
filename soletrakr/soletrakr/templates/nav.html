@@ -1,0 +1,49 @@
+<div class="navbar">
+	<div class="navbar-inner">
+		<a class="brand" href="{% url "base" %}"><strong><span style="color:#9932cc;">Sole</span><span class="green">Trakr</span></strong></a>
+		<ul class="nav">
+			{% if user.is_authenticated %}
+				<li><a href="{% url "dashboard" %}"><i class="icon-dashboard"></i> Dashboard</a></li>
+			{% else %}
+				<li><a href="{% url "login" %}"><i class="icon-dashboard"></i> Dashboard</a></li>
+			{% endif %}
+			<li><a href="{% url "api" %}"><i class="icon-code"></i>  API</a></li>
+			<li><a href="{% url "about_us" %}"><i class="icon-info-sign"></i> About Us </a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group"></i>  Support <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="{% url "faq" %}"><i class="icon-question-sign"></i>  FAQ</a></li>
+					<li><a href="{% url "contact_us" %}"><i class="icon-envelope-alt"></i>  Contact Us</a></li>
+				</ul>
+			</li>
+
+		</ul>
+
+		<div style="display:inline-block" class="pull-right">
+
+			<ul class="nav nav-pills pull-right">
+
+				{% if user.is_authenticated %}
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> {{user}} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url "settings" %}"><i class="icon-cogs"></i> Settings</a></li>
+							<li><a href="#"><i class="icon-lock"></i> Change Password</a></li>
+							<li><a href="#" onclick="Dajaxice.users.logout_user(Dajax.process);"><i class="icon-signout"></i> Logout</a></li>
+						</ul>
+					</li>
+
+				{% else %}
+
+					<a class="btn btn-info" href="{% url "register" %}" ><i class="icon-pencil"></i> Register </a>
+					<a class="btn" href="{% url "login" %}" ><i class="icon-signin"></i> Login</a>
+
+				{% endif %}
+				
+			</ul>
+
+		</div>
+	</div>
+</div>
+

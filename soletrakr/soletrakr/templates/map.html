@@ -1,0 +1,41 @@
+<div id="map" class="well span9" style="height: 500px"></div>
+<script type="text/javascript">
+
+console.log("test");
+
+var user;
+var api_key
+
+var map = new GMaps({
+  div: '#map',
+  lat: -12.043333,
+  lng: -77.028333
+});
+
+
+
+$.getJSON("http://www.altoidengineer.com/api/devices/?format=json&username=sbuggay@gmail.com&api_key=95ff842a18a75c2c4898a1e2e45ccb782e44dcf4", function(data){
+    for (var i=0, len=data.length; i < len; i++) {
+        console.log(data[i]);
+    }
+});
+
+var devices = new Array();
+
+// Loop this shit.
+devices[0] = map.createMarker({
+  lat: -12.043333,
+  lng: -77.028333,
+  title: 'Devan',
+  click: function(e) {
+    $(this).lat = -12.06,
+    $(this).lng = -77.05
+  }
+});
+//
+map.addMarkers(devices);
+
+var latlng = new google.maps.LatLng(-12.05, -77.03);
+devices[0].setPosition(latlng)
+
+</script>

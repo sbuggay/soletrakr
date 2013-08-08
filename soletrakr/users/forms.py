@@ -1,0 +1,177 @@
+from django import forms
+from django.conf import settings
+from django.contrib.auth.models import User, check_password
+from django.contrib.auth import login as auth_login, authenticate
+from django.core.mail import send_mail
+
+from userprofiles.auth_backends import EmailOrUsernameModelBackend
+
+from users.models import UserManager
+
+
+class LoginForm(forms.Form):
+	"""
+	Login form used by users.
+	"""
+	email = forms.EmailField(label='Email', 
+		widget=forms.TextInput(attrs={'placeholder' : 'Email'}))
+	password = forms.CharField(label='Password', 
+		widget=forms.PasswordInput(attrs={'placeholder' : 'Password'}))
+
+
+	def clean(self):
+		"""
+		Overwritten clean function to enforce user is authenticated 
+		on backend before being logged in.
+		"""
+		# Check for valid user
+		if not User.objects.filter(email__exact=self.cleaned_data['email']).exists():
+			raise forms.ValidationError('User does not exist.')
+
+		# Check for valid password
+		try:
+			user = authenticate(username=self.cleaned_data['email'], password=self.cleaned_data['password'])
+
+			# Check for inactive user
+			if not user.is_active:
+				raise forms.ValidationError('User is inactive.')
+
+		except:
+			raise forms.ValidationError('Invalid password')
+		
+		return self.cleaned_data
+
+
+	def save(self, request):
+		"""
+		Save method which takes email/password combination and attempts 
+		to authenticate the user. Returns true if the user authenticated 
+		successfully, false otherwise.
+		"""
+		email = self.cleaned_data['email']
+		password = self.cleaned_data['password']
+		backend = EmailOrUsernameModelBackend()
+
+		# authenticate user on userprofiles backend (for email only)
+		user = backend.authenticate(username=email, password=password)
+		# authenticate user on django backend
+		user = authenticate(username=user.username, password=password)
+		auth_login(request, user)
+
+		return user
+
+
+class RegisterForm(forms.Form):
+	"""
+	Registration form used by users.
+	"""
+	email = forms.EmailField(label='Email', 
+		widget=forms.TextInput(attrs={'placeholder' : 'Email'}))
+	password = forms.CharField(label='Password', 
+		widget=forms.PasswordInput(attrs={'placeholder' : 'Password'}))
+	password_repeat = forms.CharField(label='Repeat Password', 
+		widget=forms.PasswordInput(attrs={'placeholder' : 'Repeat password'}))
+
+
+	def clean(self):
+		"""
+		Clean function called to validate that form fields are valid 
+		before submission and return the cleaned data.
+		"""
+		if self.cleaned_data['password'] and self.cleaned_data['password_repeat']:
+			if self.cleaned_data['password'] != self.cleaned_data['password_repeat']:
+				raise forms.ValidationError('Passwords must match.')
+
+		return self.cleaned_data
+
+
+	def save(self, *args, **kwargs):
+		"""
+		Save function called once a form's input fields have been validated 
+		by the server.
+		"""
+		# create new user
+		new_user = UserManager.create_user(self.cleaned_data['email'], self.cleaned_data['password'])
+
+		return new_user
+
+
+class ChangePasswordForm(forms.Form):
+	"""
+	Form used by users to change their account password.
+	"""
+	old_password = forms.CharField(label='Old password', 
+		widget=forms.PasswordInput(attrs={'placeholder' : 'Old password'}))
+	new_password = forms.CharField(label='New password', 
+		widget=forms.PasswordInput(attrs={'placeholder' : 'New password'}))
+	new_password_repeat = forms.CharField(label='Repeat new password', 
+		widget=forms.PasswordInput(attrs={'placeholder' : 'Repeat new password'}))
+
+
+	def clean(self):
+		"""
+		Overwritten clean function which checks for password matches before the form is valid.
+		"""
+		if self.cleaned_data['new_password'] and self.cleaned_data['new_password_repeat']:
+			if self.cleaned_data['new_password'] != self.cleaned_data['new_password_repeat']:
+				raise forms.ValidationError('New passwords must match.')
+
+		return self.cleaned_data
+
+
+	def save(self, user, *args, **kwargs):
+		"""
+		Save function called once both password pairs match. Validates old user password
+		before setting the new password.
+
+		@param user: 	The user whose password is being changed.
+		@return: 		True if the password was successfully changed, False otherwise.
+		"""
+		if not isinstance(user, User):
+			raise ValueError('user parameter must be of type User')
+
+		if check_password(self.cleaned_data['old_password'], user.password):
+			user.set_password(self.cleaned_data['new_password'])
+			user.save()
+			return True
+
+		else:
+			return False
+
+
+class ForgotPasswordForm(forms.Form):
+	"""
+	Form used by users to recover their forgotten password.
+	"""
+	email = forms.EmailField(label='Email', 
+		widget=forms.TextInput(attrs={'placeholder' : 'Email'}))
+
+
+	def clean(self):
+		"""
+		Overwritten clean function used to validate that the email submitted 
+		by the form corresponds to an existing user.
+		"""
+		if not User.objects.filter(email__exact=self.cleaned_data['email']).exists():
+			raise forms.ValidationError('User does not exist.')
+
+		return self.cleaned_data
+
+
+	def save(self):
+		"""
+		Save method which creates the temporary autogenerated URL containing a new password form,
+		then emails a link to the specified user to complete the password recovery process.
+		"""
+		user = User.objects.get(username__exact=self.cleaned_data['email'])
+
+		# create temporary view at autogenerated url for new password form
+		# not yet implemented
+
+		# send email
+		subject = 'SoleTrakr: Forgotten Password Recovery'
+		message = 'n/a'
+		from_email = 'soletrakr@gmail.com'
+		recipient_list =[user.email]
+
+		send_mail(subject=subject, message=message, from_email=from_email, recipient_list=recipient_list)

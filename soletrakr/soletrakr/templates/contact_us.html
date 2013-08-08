@@ -1,0 +1,45 @@
+{% load dajaxice_templatetags %}
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<!-- internal stylesheets -->
+	<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/bootstrap.less" />
+	<link rel="stylesheet" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css">
+	<!-- interal scripts -->
+	<script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/gmaps.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}dajax/jquery.dajax.core.js"></script>
+
+	{% dajaxice_js_import %}
+</head>
+<body>
+	<!-- container -->
+	<div class="container">
+		{% include "nav.html" %}
+
+		<!-- content -->
+		<div class="well">
+			<h1> SoleTrakr <small>contact us</small></h1>
+			<hr>
+			<ul class="unstyled">
+  				<i class="icon-mail"><a href="mailto:#">support@soletrakr.com</a></i>
+  				<li><span class="label label-info">twitter</span> @soletrakr</li>
+  				<li><span class="label label-inverse">irc</span> irc</li>
+			</ul>
+			
+			
+			<a href="#" data-toggle="tooltip" title="first tooltip">hover over me</a>
+		</div>
+
+		{% include "footer.html" %}
+	</div>
+
+	<!-- internal scripts -->
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+
+	<script type="text/javascript" src="{{ STATIC_URL }}js/soletrackr.js"></script>
+</body>
+</html>
