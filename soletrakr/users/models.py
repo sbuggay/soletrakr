@@ -5,8 +5,11 @@ from django.contrib.localflavor.us import models as us_models
 
 from tastypie.models import create_api_key
 
+try:
+    models.signals.post_save.connect(create_api_key, sender=User) # link user creation to API key creation
+except Exception, e:
+    pass
 
-models.signals.post_save.connect(create_api_key, sender=User) # link user creation to API key creation
 
 
 class Profile(models.Model):
