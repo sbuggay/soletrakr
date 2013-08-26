@@ -15,23 +15,22 @@
 	{% dajaxice_js_import %}
 </head>
 <body>
+	<div class="header">
+		<!-- container -->
+		<div class="container">
+
+			{% include "nav.html" %}
+			<img src="{{ STATIC_URL }}img/logo.png" alt="some_text">
+			<img src="{{ STATIC_URL }}img/brand.png" class="pull-right" alt="some_text">
+		</div>
+	</div>
 	<!-- container -->
 	<div class="container">
-		{% include "nav.html" %}
 
-		<!-- content -->
-		<div class="well">
-			<h1> SoleTrakr <small>contact us</small></h1>
-			<hr>
-			<ul class="unstyled">
-  				<i class="icon-mail"><a href="mailto:#">support@soletrakr.com</a></i>
-  				<li><span class="label label-info">twitter</span> @soletrakr</li>
-  				<li><span class="label label-inverse">irc</span> irc</li>
-			</ul>
-			
-			
-			<a href="#" data-toggle="tooltip" title="first tooltip">hover over me</a>
-		</div>
+<div class="page-header">
+  <h1>Contact Us<small> contact information</small></h1>
+</div>
+
 
 		{% include "footer.html" %}
 	</div>

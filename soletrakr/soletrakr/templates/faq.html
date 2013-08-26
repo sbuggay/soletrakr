@@ -15,14 +15,21 @@
 	{% dajaxice_js_import %}
 </head>
 <body>	
+	<div class="header">
+		<!-- container -->
+		<div class="container">
 
+			{% include "nav.html" %}
+			<img src="{{ STATIC_URL }}img/logo.png" alt="some_text">
+			<img src="{{ STATIC_URL }}img/brand.png" class="pull-right" alt="some_text">
+		</div>
+	</div>
 	<!-- container -->
 	<div class="container">
-		{% include "nav.html" %}
 
+	<h1>FAQ<small> frequently asked questions</small></h1>
 		<!-- content -->
 		<div class="well">
-			<h1> SoleTrakr <small>FAQ</small></h1>
 			<hr>
 			<h2>Queston1</h2>
 			<pre>answer1</pre>
