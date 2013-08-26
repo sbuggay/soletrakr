@@ -22,7 +22,7 @@
 		<div class="container">
 
 			{% include "nav.html" %}
-			<img src="{{ STATIC_URL }}img/logo.png" alt="some_text">
+			<a href="{% url "base" %}"><img src="{{ STATIC_URL }}img/logo.png" alt="some_text"></a>
 			<img src="{{ STATIC_URL }}img/brand.png" class="pull-right" alt="some_text">
 		</div>
 	</div>
@@ -38,6 +38,26 @@
 				<h1>SoleTrakr!</h1>
 				<p>SoleTrakr is a GPS safety solution designed for children. -SoleTrakr</p>
 				<p><a class="btn btn-primary btn-lg">Learn more</a> <a class="btn btn-primary btn-lg">Sign Up</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="jumbotron">
+					<div class="container">
+					<h1>Small footprint tracker</h1>
+						<p>SoleTrakr utilizes an extremely small tracker that is designed to fit into a chiles shoe sole.</p>
+						<p><a class="btn btn-primary btn-lg">Learn more</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="jumbotron">
+					<div class="container">
+						<h1>Advanced tracking suite</h1>
+						<p>SoleTrakr uses a robust and well designed API to track your various devices</p>
+						<p><a class="btn btn-primary btn-lg">Learn more</a></p>
+					</div>
+				</div>
 			</div>
 		</div>
 
