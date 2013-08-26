@@ -40,7 +40,15 @@
 </head>
 <body>
 	
+  <div class="header">
+    <!-- container -->
+    <div class="container">
 
+      {% include "nav.html" %}
+      <img src="{{ STATIC_URL }}img/logo.png" alt="some_text">
+      <img src="{{ STATIC_URL }}img/brand.png" class="pull-right" alt="some_text">
+    </div>
+  </div>
 	<!-- container -->
 	<div class="container">
 		<br>
@@ -54,7 +62,7 @@
         <button class="btn btn-primary" type="submit" ;="">Register</button>
      	</form>
 	</div>
-
+  {% include "footer.html" %}
 	<!-- internal scripts -->
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
