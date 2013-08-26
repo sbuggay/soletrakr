@@ -4,10 +4,10 @@
 <html lang="en-us">
 <head>
 	<!-- internal stylesheets -->
-	<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/bootstrap.less" />
-	<link rel="stylesheet" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}css/soletrakr.css" rel="stylesheet">
 	<!-- interal scripts -->
-	<script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/gmaps.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}dajax/jquery.dajax.core.js"></script>
@@ -15,48 +15,56 @@
 	{% dajaxice_js_import %}
 </head>
 <body>	
+	<div class="header">
+		<!-- container -->
+		<div class="container">
 
+			{% include "nav.html" %}
+			<img src="{{ STATIC_URL }}img/logo.png" alt="some_text">
+			<img src="{{ STATIC_URL }}img/brand.png" class="pull-right" alt="some_text">
+		</div>
+	</div>
 	<!-- container -->
 	<div class="container">
-		{% include "nav.html" %}
+
 
 		<!-- content -->
 		
-			<h1>
-				Company Overview
-			</h1>
-			<p class="well">
-				Over 800,000 children are reported missing each year. SoleTrakr (the “Company”) is a revolutionary concept designed to address this concern by enhancing consumer safety. The Company’s unique inner sole design incorporates an embedded global positioning system (“GPS”) module that enables a parent, caregiver or emergency responder to pinpoint the user’s real-time location by accessing a secure, web-based mapping platform through an internet browser or mobile device. SoleTrakr’ proprietary inner sole technology is designed to safeguard children, monitor the elderly, and protect outdoor enthusiasts. The broad application of the Company’s offering has the ability to provide a strategic partner with product line differentiation and access to an attractive customer demographic. 
-			</p>
-				<small>
-					SoleTrakr’ has applied to the United States Patent and Trademark Office (“USPTO”) for a utility patent on its improved footwear with position determination unit.
-				</small>
-			
-			<div class="row">
-				<div class="span6">
-			<h1>
-				Value Proposition and Market Opportunity
-			</h1>
-			<p class="well">
-				The U.S. Department of Justice states that approximately 2,200 children are reported missing each day. Length of time missing and recovery rate has resulted in a rise in child safety programs, including the advent of Amber Alerts. With over 50 million U.S. children under the age of 12, SoleTrakr offers a unique value proposition to a sizeable market. Parents and guardians can be comforted with real-time access to a child’s location within surrounding neighborhoods and crowded venues. Other web-based applications offered from SoleTrakr include instant email/text blasts for missing children, calorie counting for fitness and satellite based games.  Additionally, caregivers can utilize SoleTrakr to monitor other demographic groups such as adults with Alzheimer's or dementia that may wander at inopportune times. Another design includes hikers, park rangers and outdoor enthusiasts that operate in remote areas can benefit from a location based service in emergency situations.
-			</p>
-				</div>
-				<div class="span6">
+		<h1>
+			Company Overview
+		</h1>
+		<p class="well">
+			Over 800,000 children are reported missing each year. SoleTrakr (the “Company”) is a revolutionary concept designed to address this concern by enhancing consumer safety. The Company’s unique inner sole design incorporates an embedded global positioning system (“GPS”) module that enables a parent, caregiver or emergency responder to pinpoint the user’s real-time location by accessing a secure, web-based mapping platform through an internet browser or mobile device. SoleTrakr’ proprietary inner sole technology is designed to safeguard children, monitor the elderly, and protect outdoor enthusiasts. The broad application of the Company’s offering has the ability to provide a strategic partner with product line differentiation and access to an attractive customer demographic. 
+		</p>
+		<small>
+			SoleTrakr’ has applied to the United States Patent and Trademark Office (“USPTO”) for a utility patent on its improved footwear with position determination unit.
+		</small>
 
-			
-			<h1>
-				Product Overview and User Interface
-			</h1>
-			<p class="well">
-				The Company’s product line embeds a small GPS circuit board and antenna into the customized insole. The insole is designed using arch support that offers biomechanical stability.  The GPS circuit board is affixed within the arch cavity and a flexible antenna is placed into the insole’s layers to provide maximum reception and comfort.
+		<div class="row">
+			<div class="col-md-6">
+				<h1>
+					Value Proposition and Market Opportunity
+				</h1>
+				<p class="well">
+					The U.S. Department of Justice states that approximately 2,200 children are reported missing each day. Length of time missing and recovery rate has resulted in a rise in child safety programs, including the advent of Amber Alerts. With over 50 million U.S. children under the age of 12, SoleTrakr offers a unique value proposition to a sizeable market. Parents and guardians can be comforted with real-time access to a child’s location within surrounding neighborhoods and crowded venues. Other web-based applications offered from SoleTrakr include instant email/text blasts for missing children, calorie counting for fitness and satellite based games.  Additionally, caregivers can utilize SoleTrakr to monitor other demographic groups such as adults with Alzheimer's or dementia that may wander at inopportune times. Another design includes hikers, park rangers and outdoor enthusiasts that operate in remote areas can benefit from a location based service in emergency situations.
+				</p>
+			</div>
+			<div class="col-md-6">
 
-				Cell phones can provide similar location-based services, but are not a viable option within the Company’s target market. Mobile devices cater to adults and their ability to transmit a GPS signal is restricted by a limited battery life. SoleTrakr’ ability to extend battery life by adjusting signal frequency and harnessing a user’s kinetic energy provides a compelling competitive advantage.
 
-				SoleTrakr allows a parent, authorized caregiver or emergency responder to access its user interface through a traditional internet browser or mobile device. After completing the secure, password protected login, the consumer is provided with actionable, real time information about the user’s safety and location. The tracking device is capable of updating its location every five (5) seconds and providing accuracy within a 4-meter diameter. The unique service can also provide with electronic alerts when a designated user leaves an established perimeter. Known as “Geofencing” this allows the caregiver to ensure the child stays in a designated area such as a school or home location.  The mapping platform and user interface were designed through third party developers and launched in 2012.
-			</p>
+				<h1>
+					Product Overview and User Interface
+				</h1>
+				<p class="well">
+					The Company’s product line embeds a small GPS circuit board and antenna into the customized insole. The insole is designed using arch support that offers biomechanical stability.  The GPS circuit board is affixed within the arch cavity and a flexible antenna is placed into the insole’s layers to provide maximum reception and comfort.
 
+					Cell phones can provide similar location-based services, but are not a viable option within the Company’s target market. Mobile devices cater to adults and their ability to transmit a GPS signal is restricted by a limited battery life. SoleTrakr’ ability to extend battery life by adjusting signal frequency and harnessing a user’s kinetic energy provides a compelling competitive advantage.
+
+					SoleTrakr allows a parent, authorized caregiver or emergency responder to access its user interface through a traditional internet browser or mobile device. After completing the secure, password protected login, the consumer is provided with actionable, real time information about the user’s safety and location. The tracking device is capable of updating its location every five (5) seconds and providing accuracy within a 4-meter diameter. The unique service can also provide with electronic alerts when a designated user leaves an established perimeter. Known as “Geofencing” this allows the caregiver to ensure the child stays in a designated area such as a school or home location.  The mapping platform and user interface were designed through third party developers and launched in 2012.
+				</p>
+
+			</div>
 		</div>
-	</div>
 
 		
 	</div>
@@ -65,8 +73,7 @@
 
 	<!-- internal scripts -->
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
-
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/soletrackr.js"></script>
 </body>
 </html>
