@@ -59,8 +59,8 @@ def dashboard(request):
 	which contains the map and controls.
 	"""
 	context = {
-		'user' : request.user,
-		'devices' : request.user.devices.all(),
+		# 'user' : request.user,
+		# 'devices' : request.user.devices.all(),
 	}
 	return render(request, 'dashboard.html', context)
 
