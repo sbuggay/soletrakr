@@ -27,9 +27,12 @@
   </div>
 	<!-- container -->
 	<div class="container">
-		<br>
+		<div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      User profiles are currently offline due to maintenance. See the dashboard prototype here
+    </div>
 		<form class="form-signin" action="{% url "login" %}" method="POST">
-      <h2 class="form-signin-heading">Sole<span class="green">Trakr</span></h2>
+    {#}  <h2 class="form-signin-heading">Sole<span class="green">Trakr</span></h2>
       <fieldset>
         {% csrf_token %}
         {{ login_form.as_p }}
@@ -41,7 +44,7 @@
       <fieldset>
         {% csrf_token %}
         {{ login_form.as_p }}
-      </fieldset>
+      </fieldset> #}
       <div class="form-group">
         <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
         <div class="col-lg-10">
