@@ -4,10 +4,10 @@
 <html lang="en-us">
 <head>
 	<!-- internal stylesheets -->
-	<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}less/bootstrap.less" />
-	<link rel="stylesheet" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}css/soletrakr.css" rel="stylesheet">
 	<!-- interal scripts -->
-	<script type="text/javascript" src="{{ STATIC_URL }}js/less.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/gmaps.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}dajax/jquery.dajax.core.js"></script>
@@ -17,13 +17,21 @@
 	{% dajaxice_js_import %}
 </head>
 <body>	
-	
+	<div class="header">
+		<!-- container -->
+		<div class="container">
+
+			{% include "nav.html" %}
+			<a href="{% url "base" %}"><img src="{{ STATIC_URL }}img/logo.png" alt="some_text"></a>
+			<img src="{{ STATIC_URL }}img/brand.png" class="pull-right" alt="some_text">
+		</div>
+	</div>
 	<!-- container -->
 	<div class="container">
-		{% include "nav.html" %}
+
 
 		<div class="row">
-			<div class="well span2" style="height: 500px">
+			<div class="well col-md-3" style="height: 500px">
 
 				<div class="toolbox-list" style="height:160px;border:1px solid #555; border-radius: 2px;overflow:auto;">
 					<ul id="markers-with-index"></ul>
@@ -46,7 +54,7 @@
 				<button class="btn btn-primary" type="submit">Update</button>
 				
 			</div>
-			<div id="map" class="well span9" style="height: 500px"></div>
+			<div id="map" class="well col-md-9" style="height: 500px"></div>
 		</div>
 	</div>
 
@@ -54,9 +62,8 @@
 
 
 	<!-- internal scripts -->
-
 	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/soletrackr.js"></script>
 
 </body>

@@ -51,8 +51,8 @@ def register(request):
 	return render(request, 'register.html', context)
 
 
-@csrf_protect
-@login_required
+//@csrf_protect
+//@login_required
 def dashboard(request):
 	"""
 	View for logged-in user's dashboard page, 
