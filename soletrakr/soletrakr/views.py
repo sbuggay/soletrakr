@@ -28,3 +28,7 @@ def contact_us(request):
 def about_us(request):
 	context = dict()
 	return render(request, 'about_us.html', context)
+
+def prototype(request):
+	context = dict()
+	return render(request, 'prototype.html', context)
