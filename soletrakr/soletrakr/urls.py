@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^doc/$', 'soletrakr.views.api_documentation', name='api'),
     url(r'^contact_us/$', 'soletrakr.views.contact_us', name='contact_us'),
     url(r'^about_us/$', 'soletrakr.views.about_us', name='about_us'),
-    url(r'^prototype/$', 'soletrakr.view.prototype', name='prototype'),
+    # url(r'^prototype/$', 'soletrakr.view.prototype', name='prototype'),
 
     # User-related urls
     url(r'^', include('users.urls')),
