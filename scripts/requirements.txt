@@ -1,6 +1,6 @@
 requests
 psycopg2
-Django==1.5
+Django==1.11.29
 https://github.com/django/django-localflavor/zipball/master
 django-tastypie
 django-userprofiles
